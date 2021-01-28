@@ -44,7 +44,26 @@ public class BankAccount {
             return false;
         }
         else {
-            return true;
+            String[] elements = email.split("@");
+            if(elements.length != 2){
+                return false;
+            }
+            else if(elements[0].length() < 1 || elements[1].length() < 1){
+                return false;
+            }
+            else if(elements[1].indexOf(".") == -1){
+                return false;
+            }
+            else{
+                String domain = elements[1];
+                String[] strings = domain.split("\\.");
+                if(strings.length != 2){
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
         }
-    }
+    } 
 }
