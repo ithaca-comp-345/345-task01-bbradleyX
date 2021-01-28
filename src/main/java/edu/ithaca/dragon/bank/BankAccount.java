@@ -30,7 +30,8 @@ public class BankAccount {
      * @post reduces the balance by amount if amount is non-negative and smaller than balance
      */
     public void withdraw (double amount) throws InsufficientFundsException{
-        if (amount <= balance){
+        if(amount < 0){}
+        else if (amount <= balance){
             balance -= amount;
         }
         else {
