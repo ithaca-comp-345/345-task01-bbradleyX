@@ -117,5 +117,44 @@ public class BankAccount {
                 }
             }
         }
-    } 
+    }
+    
+    
+    /**
+     * @return true if amount is positive (amount > 0) and has two or fewer decimal places, otherwise false
+     */
+    public static boolean isAmountValid(double amount){
+        if(amount < 0){
+            return false;
+        }
+
+        // Check to see if there are two or less decimal places.
+        String num = Double.toString(amount);
+        int integers = num.indexOf('.');
+        int decimals = num.length() - integers - 1;
+        if(decimals > 2){
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @param amount amount to be deposited
+     * @throws IllegalArgumentException if amount is negative or has more than 2 decimal places.
+     * @post increases balance by amount
+     */
+    public void deposit(double amount) throws IllegalArgumentException {
+
+    }
+
+    /**
+     * @param amount to be transferred
+     * @throws IllegalArgumentException if amount is negative or has more than 2 decimal places
+     * @throws InsufficientFundsException if balance is too low to transfer
+     * @post amount is withdrawn from source and deposited in target account
+     */
+    public void transfer(BankAccount target, double amount) throws IllegalArgumentException, InsufficientFundsException {
+
+    }
 }
