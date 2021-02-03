@@ -10,8 +10,11 @@ public class BankAccount {
      */
     public BankAccount(String email, double startingBalance){
         if (isEmailValid(email)){
-            this.email = email;
-            this.balance = startingBalance;
+            if(isAmountValid(startingBalance)){
+                this.email = email;
+                this.balance = startingBalance;
+            }
+            else throw new IllegalArgumentException("Starting balance must be positive and have no more than two decimal places");
         }
         else {
             throw new IllegalArgumentException("Email address: " + email + " is invalid, cannot create account");
@@ -124,7 +127,7 @@ public class BankAccount {
      * @return true if amount is positive (amount > 0) and has two or fewer decimal places, otherwise false
      */
     public static boolean isAmountValid(double amount){
-        if(amount < 0){
+        if(amount <= 0){
             return false;
         }
 
@@ -145,7 +148,12 @@ public class BankAccount {
      * @post increases balance by amount
      */
     public void deposit(double amount) throws IllegalArgumentException {
-
+        if(isAmountValid(amount)){
+            balance += amount;
+        }
+        else{
+            throw new IllegalArgumentException("Invalid amount");
+        }
     }
 
     /**
@@ -155,6 +163,20 @@ public class BankAccount {
      * @post amount is withdrawn from source and deposited in target account
      */
     public void transfer(BankAccount target, double amount) throws IllegalArgumentException, InsufficientFundsException {
+        if(isAmountValid(amount) == false){
+            throw new IllegalArgumentException("Invalid amount");
+        }
+        else{
+            // Pull money from first count
+            try{
+                this.withdraw(amount);
+            }
+            catch(Exception e){
+                throw new InsufficientFundsException("Insufficient funds");
+            }
 
+            // Put money into the second account
+            target.deposit(amount);
+        }
     }
 }

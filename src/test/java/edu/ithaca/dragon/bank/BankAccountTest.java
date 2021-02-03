@@ -20,9 +20,10 @@ class BankAccountTest {
         BankAccount bankAccount3 = new BankAccount("a@b.com", 2);
         assertEquals(2, bankAccount3.getBalance());
 
+        /* Balance cannot be negative
         //Negative balance
         BankAccount bankAccount4 = new BankAccount("a@b.com", -20);
-        assertEquals(-20, bankAccount4.getBalance());
+        assertEquals(-20, bankAccount4.getBalance()); */
 
     }
 
