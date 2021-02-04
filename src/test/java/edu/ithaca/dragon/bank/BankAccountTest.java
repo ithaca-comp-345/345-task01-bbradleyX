@@ -20,9 +20,15 @@ class BankAccountTest {
         BankAccount bankAccount3 = new BankAccount("a@b.com", 2.00);
         assertEquals(2, bankAccount3.getBalance());
 
+        /* Balance cannot be negative
         //Negative balance
+<<<<<<< HEAD
         BankAccount bankAccount4 = new BankAccount("a@b.com", -20.00);
         assertEquals(-20, bankAccount4.getBalance());
+=======
+        BankAccount bankAccount4 = new BankAccount("a@b.com", -20);
+        assertEquals(-20, bankAccount4.getBalance()); */
+>>>>>>> c95cf8cf02b0c607564f868dc681d585654f67be
 
     }
 
@@ -76,6 +82,7 @@ class BankAccountTest {
         assertFalse(BankAccount.isEmailValid("@a"));
         assertFalse(BankAccount.isEmailValid(".a"));
 
+<<<<<<< HEAD
         //Tests for the use and placement of characters
         assertFalse(BankAccount.isEmailValid("abc-@mail.com"));
         assertFalse(BankAccount.isEmailValid("abc..def@mail.com"));
@@ -88,6 +95,8 @@ class BankAccountTest {
     @Test
     void isAmountValidTest(){
         BankAccount bankAccount = new BankAccount("a@b.com", 200.00);
+=======
+>>>>>>> c95cf8cf02b0c607564f868dc681d585654f67be
         
         //Tests for double amount, correct format
         assertTrue(BankAccount.isEmailValid( "a@b.com"));
