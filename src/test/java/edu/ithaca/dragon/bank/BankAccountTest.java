@@ -20,15 +20,9 @@ class BankAccountTest {
         BankAccount bankAccount3 = new BankAccount("a@b.com", 2.00);
         assertEquals(2, bankAccount3.getBalance());
 
-        /* Balance cannot be negative
         //Negative balance
-<<<<<<< HEAD
         BankAccount bankAccount4 = new BankAccount("a@b.com", -20.00);
         assertEquals(-20, bankAccount4.getBalance());
-=======
-        BankAccount bankAccount4 = new BankAccount("a@b.com", -20);
-        assertEquals(-20, bankAccount4.getBalance()); */
->>>>>>> c95cf8cf02b0c607564f868dc681d585654f67be
 
     }
 
@@ -82,7 +76,6 @@ class BankAccountTest {
         assertFalse(BankAccount.isEmailValid("@a"));
         assertFalse(BankAccount.isEmailValid(".a"));
 
-<<<<<<< HEAD
         //Tests for the use and placement of characters
         assertFalse(BankAccount.isEmailValid("abc-@mail.com"));
         assertFalse(BankAccount.isEmailValid("abc..def@mail.com"));
@@ -92,11 +85,9 @@ class BankAccountTest {
         
     }
 
-    @Test
+    /* @Test
     void isAmountValidTest(){
         BankAccount bankAccount = new BankAccount("a@b.com", 200.00);
-=======
->>>>>>> c95cf8cf02b0c607564f868dc681d585654f67be
         
         //Tests for double amount, correct format
         assertTrue(BankAccount.isEmailValid( "a@b.com"));
@@ -126,22 +117,31 @@ class BankAccountTest {
         BankAccount bankAccount2 = new BankAccount("a@b.com", 200.00);
 
         //Test for a high number transfer
-        bankAccount1.transfer(100,bankAccount1,bankAccount2);
+        bankAccount1.transfer(100.00,bankAccount1,bankAccount2);
         assertEquals(400.00, bankAccount1.getBalance());
-        assertEquals(100.00, bankAccount2.getBalance());
+        assertEquals(300.00, bankAccount2.getBalance());
 
         //Test for a low number transfer
-        bankAccount1.transfer(10,bankAccount1,bankAccount2);
-        assertEquals(100.00, bankAccount1.getBalance());
-        assertEquals(100.00, bankAccount2.getBalance());
+        bankAccount1.transfer(10.00,bankAccount1,bankAccount2);
+        assertEquals(390.00, bankAccount1.getBalance());
+        assertEquals(310.00, bankAccount2.getBalance());
 
         //Test for a transfer where account is greater than accountTo's balance
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount1.transfer(600.00,bankAccount1,bankAccount2));
+        assertEquals(390.00, bankAccount1.getBalance());
+        assertEquals(310.00, bankAccount2.getBalance());
 
-        //Test for a negative number transer 
+        //Test for a negative number transer
+        assertThrows(IllegalArgumentException.class, ()-> bankAccount1.transfer(-60.00,bankAccount1,bankAccount2));
+        assertEquals(390.00, bankAccount1.getBalance());
+        assertEquals(310.00, bankAccount2.getBalance());
 
         //Test for a zero transfer
+        bankAccount1.transfer(0.00,bankAccount1,bankAccount2);
+        assertEquals(390.00, bankAccount1.getBalance());
+        assertEquals(310.00, bankAccount2.getBalance());
 
-    }
+    } */
 
     @Test
     void constructorTest() {
